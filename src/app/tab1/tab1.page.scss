@@ -1,4 +1,13 @@
-ion-col {
-    border: 1px solid grey;
-    text-align: center;
-  }
+p {
+  font-size: 10px;
+}
+ion-item-option::part(native) {
+  min-width: 70px;
+}
+ion-item-option > ion-icon {
+  font-size: 24px;
+}
+p > ion-icon {
+  font-size: 13px;
+  vertical-align: -10%;
+}
