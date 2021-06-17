@@ -135,10 +135,11 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding> -->
+
     <ion-item-sliding
       *ngFor="let photo of photoService.photos; index as position; "
     >
-      <ion-item [routerLink]="['/tabs/tab3']">
+      <ion-item (click)="update(photo)">
         <ion-thumbnail slot="start">
           <img
             ion-img
@@ -149,13 +150,17 @@
         </ion-thumbnail>
         <ion-label>
           <ion-text>
-            <h2>Pflanze</h2>
+            <h2>{{photo.plantName}}</h2>
           </ion-text>
-          <ion-progress-bar color="tertiary" id="pb"></ion-progress-bar>
+          <ion-progress-bar
+            color="tertiary"
+            id="pb"
+            [value]="progressCurrentTime"
+          ></ion-progress-bar>
           <ion-text>
             <p class="ion-float-left">Fotostudio</p>
             <p class="ion-float-right">
-              Die 17:00 Uhr <ion-icon name="alarm-outline"></ion-icon>
+              <ion-icon name="alarm-outline"></ion-icon>
             </p>
           </ion-text>
         </ion-label>

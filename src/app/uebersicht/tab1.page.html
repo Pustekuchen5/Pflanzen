@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Übersicht </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="\assets\images\plant_1.jpg" alt="Pflanze 1">
+       </ion-thumbnail>
+       <ion-label position="fixed">Pflanze 1</ion-label>
+       <ion-progress-bar color="tertiary" value="0.5"></ion-progress-bar>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="\assets\images\plant_2.jpg" alt="Pflanze 2">
+       </ion-thumbnail>
+       <ion-label position="fixed">Pflanze 2</ion-label>
+       <ion-progress-bar color="tertiary" value="0.7"></ion-progress-bar>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="\assets\images\plant_3.jpg" alt="Pflanze 3">
+       </ion-thumbnail>
+       <ion-label position="fixed">Pflanze 3</ion-label>
+       <ion-progress-bar color="tertiary" value="0.2"></ion-progress-bar>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="\assets\images\plant_4.jpg" alt="Pflanze 4">
+       </ion-thumbnail>
+       <ion-label position="fixed">Pflanze 4</ion-label>
+       <ion-progress-bar color="tertiary" value="0.3"></ion-progress-bar>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="\assets\images\plant_5.jpg" alt="Pflanze 5">
+       </ion-thumbnail>
+       <ion-label position="fixed">Pflanze 5</ion-label>
+       <ion-progress-bar color="tertiary" value="0.9"></ion-progress-bar>
+    </ion-item>
+  
+ -->
+
+    <ion-item-sliding *ngFor="let plant of plants">
+      <ion-item-options side="start">
+        <ion-item-option (click)="editPlant(plant)">Bearbeiten</ion-item-option>
+      </ion-item-options>
+      <ion-thumbnail slot="start">
+        <img [src]="plants.img" />
+      </ion-thumbnail>
+      <ion-label position="fixed">{{plants.name}}</ion-label>
+      <ion-progress-bar
+        color="tertiary"
+        [value]="plants.value"
+      ></ion-progress-bar>
+      <ion-item-options side="end">
+        <ion-item-option (click)="deletePlant(plant.id)" color="danger"
+          >Löschen</ion-item-option
+        >
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

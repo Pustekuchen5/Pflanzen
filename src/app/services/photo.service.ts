@@ -107,6 +107,7 @@ export class PhotoService {
         const readFile = await Filesystem.readFile({
           path: photo.filepath,
           directory: FilesystemDirectory.Data
+
         });
 
         // Web platform only: Load the photo as base64 data
