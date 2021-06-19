@@ -11,3 +11,14 @@ p > ion-icon {
   font-size: 13px;
   vertical-align: -10%;
 }
+p.menu-item{
+  font-size: 16px;
+  margin-left: 10px;
+}
+.menu-button{
+  width:10%;
+  margin-right: 10px;
+  --background: #fff;
+  --color: #000;
+  --box-shadow: none;
+}
