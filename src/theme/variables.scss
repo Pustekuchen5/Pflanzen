@@ -112,7 +112,13 @@
     --ion-color-contrast-rgb: var(--ion-color-luftfeucht-contrast-rgb);
     --ion-color-shade: var(--ion-color-luftfeucht-shade);
     --ion-color-tint: var(--ion-color-luftfeucht-tint);
+ 
   }
+
+  --select-border: var(--ion-color-secondary);
+  --select-focus: var(--ion-color-primary);
+  --select-arrow: var(--select-border);
+
 }
 
 

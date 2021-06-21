@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Steckbrief
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,12 +13,42 @@
     </ion-toolbar>
   </ion-header>
 
-  
-    <img src="\assets\images\plant_2.jpg" alt="Pflanze 2">
-  
-    <ion-input type="text" maxlength="15" minlength="3" placeholder="Enter Name" name="plantname" required="true"></ion-input>
 
-    <ion-grid>
+<ion-grid style="margin-top: 40px;">
+  <ion-row>
+      <ion-col>
+          <ion-row size="3" style="margin-top: 40px; margin-bottom: 20px;">
+              <ion-col><button id="wasserbedarf" class="water water-abit" (click)="changeClassWater()"></button></ion-col>
+          </ion-row>
+          <ion-row size="3">
+              <ion-col><button id="temperatur" class="temperatur temperatur-abit" (click)="changeClassTemp()"></button></ion-col>
+          </ion-row>
+      </ion-col>
+      <ion-col>
+          <ion-col>
+            <img src="\assets\images\plant_2.jpg" alt="Pflanze 2">
+            <ion-input type="text" maxlength="15" minlength="3" placeholder="Name der Pflanze" name="plantname" required="true" style="margin-bottom: 40px; padding-left: 0px;"></ion-input>
+          </ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-row size="3" style="margin-top: 40px; margin-bottom: 20px;">
+            <ion-col><button id="licht" class="licht licht-abit" (click)="changeClassLicht()"></button></ion-col>
+        </ion-row>
+        <ion-row size="3">
+            <ion-col><button id="feuchtigkeit" class="feuchtigkeit feuchtigkeit-abit" (click)="changeClassFeuchtigkeit()"></button></ion-col>
+        </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+ 
+  
+    
+
+    <ion-grid style="margin-bottom: 60px;" class="alarm-section">
+
+      <!--
       <ion-row>
         <ion-col size="4">
           <ion-button class="specs" color="tertiary">Wasserbedarf</ion-button>
@@ -33,18 +63,61 @@
           <ion-button class="specs"color="luftfeucht">Luftfeucht.</ion-button>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="6">
+    -->
+      <ion-row class="alarm-row">
+        <!--
+        <ion-col size="4">
+          <div class="center-wrapper">
+          <div class="select centered-content">
+            <select id="standard-select">
+              <option value="Option 1">Montag</option>
+              <option value="Option 2">Dienstag</option>
+              <option value="Option 3" color="primary">Mittwoch</option>
+              <option value="Option 4">Donnerstag</option>
+              <option value="Option 5">Freitag</option>
+              <option value="Option 6">Samstag</option>
+              <option value="Option 7">Sonntag</option>
+            </select>
+            <span class="focus"></span>
+          </div>
+          </div>
+         </ion-col>-->
+
+         <ion-col size="4">
+          <div class="center-wrapper">
+            <div class="centered-content">
+              <ion-select placeholder="Wochentag" okText="Ok" cancelText="Abbrechen">
+               <ion-select-option value="1">Montag</ion-select-option> 
+               <ion-select-option value="2">Dienstag</ion-select-option>
+               <ion-select-option value="3">Mittwoch</ion-select-option>
+               <ion-select-option value="4">Donnerstag</ion-select-option>
+               <ion-select-option value="5">Freitag</ion-select-option>
+               <ion-select-option value="6">Samtag</ion-select-option>
+               <ion-select-option value="7">Sonntag</ion-select-option>
+              </ion-select>
+            </div>
+          </div>
+         </ion-col>
+
+        <ion-col size="2" class="alarm-left">
+          <div class="center-wrapper">
+            <div class="centered-content">
             <ion-datetime  display-timezone="cet" pickerFormat="H mm" displayFormat="H:mm" minuteValues="0,15,30,45" placeholder="12:00"></ion-datetime>
+          </div>
+        </div>
         </ion-col>
-        <ion-col size="6">
-          <ion-toggle name="alarm"></ion-toggle>
+        <ion-col size="3" style="margin-left:20px;">
+          <div class="center-wrapper">
+            <div class="centered-content">
+            <ion-toggle name="alarm"></ion-toggle>
+            </div>
+          </div>
         </ion-col>
       </ion-row>
       </ion-grid>
   
     
-    <h4>Notizen</h4>
-    <ion-textarea placeholder="Enter more information here..." autoGrow="true" maxlength="500" name="description"></ion-textarea>
+    <h4 style="margin-left: 17px;">Notizen</h4>
+    <ion-textarea placeholder="Fügen Sie hier weitere Infos zu Ihrer Pflanze hinzu..." autoGrow="true" maxlength="500" name="description"style="margin-left: 10px;"></ion-textarea>
 
 </ion-content>
