@@ -141,16 +141,11 @@
     >
       <ion-item (click)="update(photo)">
         <ion-thumbnail slot="start">
-          <img
-            ion-img
-            [src]="photo.webviewPath"
-            alt="Pflanze 
-        "
-          />
+          <img ion-img [src]="photo.webviewPath" alt="Pflanze" />
         </ion-thumbnail>
         <ion-label>
           <ion-text>
-            <h2>{{photo.plantName}}</h2>
+            <h2>{{photo.photoName}}</h2>
           </ion-text>
           <ion-progress-bar
             color="tertiary"

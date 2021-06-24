@@ -33,6 +33,8 @@ export class PhotoService {
       return {
         filepath: savedFile.uri,
         webviewPath: Capacitor.convertFileSrc(savedFile.uri),
+        photoName: "testhybrid",
+        photoDiscription: "Beschreibung hinzufügen"
       };
     }
     else {
@@ -40,7 +42,9 @@ export class PhotoService {
       // already loaded into memory
       return {
         filepath: fileName,
-        webviewPath: cameraPhoto.webPath
+        webviewPath: cameraPhoto.webPath,
+        photoName: "testb",
+        photoDiscription: "Beschreibung"
       };
     }
   }
@@ -85,6 +89,8 @@ export class PhotoService {
 
     // Save the picture and add it to photo collection
     const savedImageFile = await this.savePicture(capturedPhoto);
+    console.log(savedImageFile);
+    console.log(this.photos);
     this.photos.unshift(savedImageFile);
 
     Storage.set({
@@ -97,6 +103,7 @@ export class PhotoService {
     // Retrieve cached photo array data
     const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
     this.photos = JSON.parse(photoList.value) || [];
+    // this.photos = [];
 
     // Easiest way to detect when running on the web:
     // “when the platform is NOT hybrid, do this”
@@ -112,6 +119,7 @@ export class PhotoService {
 
         // Web platform only: Load the photo as base64 data
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+
       }
     }
   }
@@ -135,8 +143,26 @@ export class PhotoService {
       directory: FilesystemDirectory.Data
     });
   }
+
+  updatePhoto(newPhoto: Photo, photoToBeUpdatedKey: string) {
+    this.photos = this.photos.map(photo => {
+      if (photo.key === photoToBeUpdatedKey) {
+        // set new data
+        photo = { ...photo, ...newPhoto };
+      }
+      return photo;
+    });
+    console.log(this.photos);
+    Storage.set({
+      key: this.PHOTO_STORAGE, //photos
+      value: JSON.stringify(this.photos)
+    });
+  }
 }
 export interface Photo {
   filepath: string;
   webviewPath: string;
+  photoName: string;
+  photoDiscription: string;
+  [key: string]: string;
 }

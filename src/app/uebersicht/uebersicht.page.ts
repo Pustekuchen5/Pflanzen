@@ -2,18 +2,19 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { Photo, PhotoService } from '../services/photo.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { Tab3Page } from '../tab3/tab3.page';
+import { SteckbriefPage } from '../steckbrief/steckbrief.page';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-uebersicht',
+  templateUrl: 'uebersicht.page.html',
+  styleUrls: ['uebersicht.page.scss']
 })
-export class Tab1Page {
+export class UebersichtPage {
   start = new Date('07/06/2021');
   end = new Date('08/06/2021');
   /* passedId = null; */
-  plantName = '';
+  photoName = '';
+  photoDiscription = '';
 
   progressCurrentTime: number = 0;
   constructor(public photoService: PhotoService, private activatedRoute: ActivatedRoute, public modalCtrl: ModalController
@@ -77,25 +78,15 @@ export class Tab1Page {
   }
   async ngOnInit() {
     await this.photoService.loadSaved();
-    this.plantName = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   deletePictureFromGallery(photo, position) {
     this.photoService.deletePicture(photo, position);
   }
-  async editPhoto() {
-    const modal = await this.modalCtrl.create({
-      component: Tab3Page
-    })
-    modal.onDidDismiss().then(newPhotoObj => {
-      console.log(newPhotoObj.data);
-    })
-    return await modal.present()
-  }
 
   async update(selectedPhoto) {
     const modal = await this.modalCtrl.create({
-      component: Tab3Page,
+      component: SteckbriefPage,
       componentProps: { photo: selectedPhoto }
     })
 
