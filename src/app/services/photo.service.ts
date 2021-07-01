@@ -4,7 +4,6 @@ import {
   CameraPhoto, CameraSource
 } from '@capacitor/core';
 import { Platform } from '@ionic/angular';
-
 const { Camera, Filesystem, Storage } = Plugins;
 
 @Injectable({

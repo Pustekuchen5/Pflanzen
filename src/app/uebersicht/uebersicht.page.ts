@@ -1,8 +1,10 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Photo, PhotoService } from '../services/photo.service';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController, Platform } from '@ionic/angular';
 import { SteckbriefPage } from '../steckbrief/steckbrief.page';
+import { LocalNotifications, ILocalNotification } from '@ionic-native/local-notifications/ngx';
+import { scheduled } from 'rxjs';
 
 @Component({
   selector: 'app-uebersicht',
@@ -17,7 +19,7 @@ export class UebersichtPage {
   photoDiscription = '';
 
   progressCurrentTime: number = 0;
-  constructor(public photoService: PhotoService, private activatedRoute: ActivatedRoute, public modalCtrl: ModalController
+  constructor(public photoService: PhotoService, private activatedRoute: ActivatedRoute, public modalCtrl: ModalController, private plt: Platform, private localNotifications: LocalNotifications, private alertCtrl: AlertController
   ) {
     this.end.setMinutes(this.end.getMinutes() + 1);
     this.setUpProgressBar("#pb", this.start.getTime(), this.end.getTime(), 100);
@@ -34,16 +36,10 @@ export class UebersichtPage {
       }
     }, minute);
 
-    const plans = [
-      {
-        name: 'ML',
-        timer: '9h15',
-        photo: {
-          name: '',
-          path: ''
-        }
-      }
-    ];
+    /*   this.localNotifications.schedule({
+        title: 'Pflanzt mich!!',
+        trigger: { every: { hour: 11, minute: 59 } }
+      }) */
   }
   setUpProgressBar(selector, startTime, endTime, update) {
 
@@ -78,6 +74,7 @@ export class UebersichtPage {
   }
   async ngOnInit() {
     await this.photoService.loadSaved();
+    this.dailyNotifications();
   }
 
   deletePictureFromGallery(photo, position) {
@@ -95,5 +92,16 @@ export class UebersichtPage {
     })
 
     return await modal.present()
+  }
+
+  dailyNotifications() {
+    let options: ILocalNotification = {
+      title: 'Pflanzt mich!!',
+      text: 'blah blah',
+      trigger: { at: new Date(new Date().getTime() + 6000) },
+      led: 'FF0000',
+      foreground: true
+    }
+    this.localNotifications.schedule(options);
   }
 }

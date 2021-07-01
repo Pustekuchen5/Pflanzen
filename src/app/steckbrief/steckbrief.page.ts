@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { PhotoService, Photo } from '../services/photo.service';
-
 
 @Component({
   selector: 'app-steckbrief',
@@ -13,19 +12,15 @@ export class SteckbriefPage implements OnInit {
   photoName;
   photoDiscription;
   newPhotoObject;
-  constructor(private nav: NavController, public modalCtr: ModalController, public photoService: PhotoService) {
+  constructor(public modalCtr: ModalController, public photoService: PhotoService) {
 
   }
-  /* ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  } */
+
   ngOnInit() {
     this.photoName = this.photo.photoName;
     this.photoDiscription = this.photo.photoDiscription;
   }
-  /*  enterName() {
-     this.nav.navigateBack(`/second/${this.newPhotoObject}`);
-   } */
+
   async dismis() {
     await this.modalCtr.dismiss(this.photoName, this.photoDiscription);
   }
@@ -37,7 +32,8 @@ export class SteckbriefPage implements OnInit {
     this.photo.photoDiscription = this.photoDiscription;
     console.log(this.photo);
     console.log(this.newPhotoObject);
-    await this.photoService.updatePhoto(this.photo, this.newPhotoObject)
+    await this.photoService.updatePhoto(this.photo, this.newPhotoObject);
     this.dismis();
   }
+
 }
