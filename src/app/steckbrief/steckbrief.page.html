@@ -18,59 +18,121 @@
     </ion-toolbar>
   </ion-header>
 
-  <img [src]="photo.webviewPath" alt="Pflanze" />
-
-  <ion-input
-    type="text"
-    maxlength="15"
-    minlength="3"
-    placeholder="Add name here"
-    name="plantname"
-    required="true"
-    [(ngModel)]="photoName"
-  ></ion-input>
-
-  <ion-grid>
+  <ion-grid class="condition">
     <ion-row>
-      <ion-col size="4">
-        <ion-button class="specs" color="tertiary">Wasserbedarf</ion-button>
+      <ion-col>
+        <ion-row size="3" class="water_condition">
+          <ion-col
+            ><button
+              id="wasserbedarf"
+              class="water water-abit"
+              (click)="changeClassWater()"
+            ></button
+          ></ion-col>
+        </ion-row>
+        <ion-row size="3">
+          <ion-col
+            ><button
+              id="temperatur"
+              class="temperatur temperatur-abit"
+              (click)="changeClassTemp()"
+            ></button
+          ></ion-col>
+        </ion-row>
       </ion-col>
-      <ion-col size="2">
-        <ion-button class="specs" color="licht">Licht</ion-button>
+      <ion-col>
+        <ion-col>
+          <img [src]="photo.webviewPath" alt="Pflanze 2" />
+          <ion-input
+            type="text"
+            maxlength="15"
+            minlength="3"
+            placeholder="Name der Pflanze"
+            name="plantname"
+            required="true"
+            [(ngModel)]="photoName"
+            class="photo_name"
+          ></ion-input>
+        </ion-col>
       </ion-col>
-      <ion-col size="2">
-        <ion-button class="specs" color="temp">Temp.</ion-button>
-      </ion-col>
-      <ion-col size="4">
-        <ion-button class="specs" color="luftfeucht">Luftfeucht.</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-datetime
-          display-timezone="cet"
-          pickerFormat="H mm"
-          displayFormat="H:mm"
-          minuteValues="0,15,30,45"
-          value="1990-02-19T07:43Z"
-          (ionChange)="getValue($event)"
-        ></ion-datetime>
-      </ion-col>
-      <ion-col size="6">
-        <ion-toggle name="alarm"></ion-toggle>
+      <ion-col>
+        <ion-row size="3" class="light_condition">
+          <ion-col
+            ><button
+              id="licht"
+              class="licht licht-abit"
+              (click)="changeClassLicht()"
+            ></button
+          ></ion-col>
+        </ion-row>
+        <ion-row size="3">
+          <ion-col
+            ><button
+              id="feuchtigkeit"
+              class="feuchtigkeit feuchtigkeit-abit"
+              (click)="changeClassFeuchtigkeit()"
+            ></button
+          ></ion-col>
+        </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <h4 class="notiz">Notizen</h4>
+  <ion-grid class="alarm-section">
+    <ion-row class="alarm-row">
+      <ion-col size="4">
+        <div class="center-wrapper">
+          <div class="centered-content">
+            <ion-select
+              placeholder="Wochentag"
+              okText="Ok"
+              cancelText="Abbrechen"
+            >
+              <ion-select-option value="1">Montag</ion-select-option>
+              <ion-select-option value="2">Dienstag</ion-select-option>
+              <ion-select-option value="3">Mittwoch</ion-select-option>
+              <ion-select-option value="4">Donnerstag</ion-select-option>
+              <ion-select-option value="5">Freitag</ion-select-option>
+              <ion-select-option value="6">Samtag</ion-select-option>
+              <ion-select-option value="7">Sonntag</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col size="2" class="alarm-left">
+        <div class="center-wrapper">
+          <div class="centered-content">
+            <ion-datetime
+              display-timezone="cet"
+              pickerFormat="H mm"
+              displayFormat="H:mm"
+              minuteValues="0,15,30,45"
+              placeholder="12:00"
+              (ionChange)="getValue($event)"
+            ></ion-datetime>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="3" class="alarm_toggle">
+        <div class="center-wrapper">
+          <div class="centered-content">
+            <ion-toggle name="alarm"></ion-toggle>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h4 class="notizen">Notizen</h4>
   <ion-textarea
-    class="notiz_text"
-    placeholder="Beschreibung hinzufügen"
+    placeholder="Fügen Sie hier weitere Infos zu Ihrer Pflanze hinzu..."
     autoGrow="true"
     maxlength="500"
     name="description"
-    required="true"
+    class="description"
     [(ngModel)]="photoDiscription"
   ></ion-textarea>
+
   <ion-button class="speichern" (click)="update()">Speichern</ion-button>
 </ion-content>

@@ -5,6 +5,7 @@ import { ModalController, AlertController, Platform } from '@ionic/angular';
 import { SteckbriefPage } from '../steckbrief/steckbrief.page';
 import { LocalNotifications, ILocalNotification } from '@ionic-native/local-notifications/ngx';
 import { scheduled } from 'rxjs';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-uebersicht',
@@ -19,7 +20,7 @@ export class UebersichtPage {
   photoDiscription = '';
 
   progressCurrentTime: number = 0;
-  constructor(public photoService: PhotoService, private activatedRoute: ActivatedRoute, public modalCtrl: ModalController, private plt: Platform, private localNotifications: LocalNotifications, private alertCtrl: AlertController
+  constructor(private menu: MenuController, public photoService: PhotoService, private activatedRoute: ActivatedRoute, public modalCtrl: ModalController, private plt: Platform, private localNotifications: LocalNotifications, private alertCtrl: AlertController
   ) {
     this.end.setMinutes(this.end.getMinutes() + 1);
     this.setUpProgressBar("#pb", this.start.getTime(), this.end.getTime(), 100);
@@ -40,6 +41,11 @@ export class UebersichtPage {
         title: 'Pflanzt mich!!',
         trigger: { every: { hour: 11, minute: 59 } }
       }) */
+  }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
   }
   setUpProgressBar(selector, startTime, endTime, update) {
 

@@ -1,6 +1,31 @@
+<ion-menu side="end" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="secondary">
+      <ion-title>Menü</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item
+        ><ion-icon name="share-social-outline"></ion-icon>
+        <p class="menu-item">Teilen</p></ion-item
+      >
+      <ion-item
+        ><ion-icon name="reorder-four-outline"></ion-icon>
+        <p class="menu-item">Neu anordnen</p></ion-item
+      >
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title> Übersicht </ion-title>
+    <ion-buttons slot="end" class="menu-button"
+      ><ion-menu-button
+        class="md button in-toolbar ion-activatable ion-focusable hydrated"
+      ></ion-menu-button
+    ></ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -25,6 +50,7 @@
           <ion-text>
             <p class="ion-float-left">Fotostudio</p>
             <p class="ion-float-right">
+              17:00
               <ion-icon name="alarm-outline"></ion-icon>
             </p>
           </ion-text>
