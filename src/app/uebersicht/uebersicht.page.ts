@@ -15,7 +15,6 @@ import { MenuController } from '@ionic/angular';
 export class UebersichtPage {
   start = new Date('07/06/2021');
   end = new Date('08/06/2021');
-  /* passedId = null; */
   photoName = '';
   photoDiscription = '';
 
@@ -37,10 +36,6 @@ export class UebersichtPage {
       }
     }, minute);
 
-    /*   this.localNotifications.schedule({
-        title: 'Pflanzt mich!!',
-        trigger: { every: { hour: 11, minute: 59 } }
-      }) */
   }
 
   openFirst() {
@@ -80,7 +75,6 @@ export class UebersichtPage {
   }
   async ngOnInit() {
     await this.photoService.loadSaved();
-    this.dailyNotifications();
   }
 
   deletePictureFromGallery(photo, position) {
@@ -100,14 +94,4 @@ export class UebersichtPage {
     return await modal.present()
   }
 
-  dailyNotifications() {
-    let options: ILocalNotification = {
-      title: 'Pflanzt mich!!',
-      text: 'blah blah',
-      trigger: { at: new Date(new Date().getTime() + 6000) },
-      led: 'FF0000',
-      foreground: true
-    }
-    this.localNotifications.schedule(options);
-  }
 }

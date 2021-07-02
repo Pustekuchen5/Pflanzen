@@ -87,14 +87,11 @@
               placeholder="Wochentag"
               okText="Ok"
               cancelText="Abbrechen"
+              [(ngModel)]="selectedDay"
             >
-              <ion-select-option value="1">Montag</ion-select-option>
-              <ion-select-option value="2">Dienstag</ion-select-option>
-              <ion-select-option value="3">Mittwoch</ion-select-option>
-              <ion-select-option value="4">Donnerstag</ion-select-option>
-              <ion-select-option value="5">Freitag</ion-select-option>
-              <ion-select-option value="6">Samtag</ion-select-option>
-              <ion-select-option value="7">Sonntag</ion-select-option>
+              <ion-select-option *ngFor="let day of days" [value]="day.value">
+                {{day.title}}
+              </ion-select-option>
             </ion-select>
           </div>
         </div>
@@ -107,9 +104,9 @@
               display-timezone="cet"
               pickerFormat="H mm"
               displayFormat="H:mm"
-              minuteValues="0,15,30,45"
               placeholder="12:00"
-              (ionChange)="getValue($event)"
+              [(ngModel)]="notifyTime"
+              (ionChange)="timeChange($event)"
             ></ion-datetime>
           </div>
         </div>
@@ -117,7 +114,7 @@
       <ion-col size="3" class="alarm_toggle">
         <div class="center-wrapper">
           <div class="centered-content">
-            <ion-toggle name="alarm"></ion-toggle>
+            <ion-toggle name="alarm" (click)="addNotifications()"></ion-toggle>
           </div>
         </div>
       </ion-col>
