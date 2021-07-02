@@ -21,6 +21,7 @@ export class SteckbriefPage implements OnInit {
   @Input() photo: Photo;
   photoName;
   photoDiscription;
+  photoLocation;
   newPhotoObject;
 
   constructor(public navCtrl: NavController, public platform: Platform, public alertCtrl: AlertController, public localNotifications: LocalNotifications, public modalCtr: ModalController, public photoService: PhotoService) {
@@ -44,17 +45,19 @@ export class SteckbriefPage implements OnInit {
   ngOnInit() {
     this.photoName = this.photo.photoName;
     this.photoDiscription = this.photo.photoDiscription;
+    this.photoLocation = this.photo.photoLocation;
   }
 
   async dismis() {
-    await this.modalCtr.dismiss(this.photoName, this.photoDiscription);
+    await this.modalCtr.dismiss(null, 'cancel');
   }
 
   async update() {
-    this.newPhotoObject = ({ photoName: this.photoName, photoDiscription: this.photoDiscription });
+    this.newPhotoObject = ({ photoName: this.photoName, photoDiscription: this.photoDiscription, photoLocation: this.photoLocation });
     console.log(this.photo);
     this.photo.photoName = this.photoName;
     this.photo.photoDiscription = this.photoDiscription;
+    this.photo.photoLocation = this.photoLocation;
     console.log(this.photo);
     console.log(this.newPhotoObject);
     await this.photoService.updatePhoto(this.photo, this.newPhotoObject);

@@ -29,7 +29,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="main">
   <ion-list>
     <ion-item-sliding
       *ngFor="let photo of photoService.photos; index as position; "
@@ -48,7 +48,7 @@
             [value]="progressCurrentTime"
           ></ion-progress-bar>
           <ion-text>
-            <p class="ion-float-left">Fotostudio</p>
+            <p class="ion-float-left">{{photo.photoLocation}}</p>
             <p class="ion-float-right">
               17:00
               <ion-icon name="alarm-outline"></ion-icon>

@@ -17,6 +17,7 @@ export class UebersichtPage {
   end = new Date('08/06/2021');
   photoName = '';
   photoDiscription = '';
+  photoLocation = '';
 
   progressCurrentTime: number = 0;
   constructor(private menu: MenuController, public photoService: PhotoService, private activatedRoute: ActivatedRoute, public modalCtrl: ModalController, private plt: Platform, private localNotifications: LocalNotifications, private alertCtrl: AlertController

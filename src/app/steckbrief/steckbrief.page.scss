@@ -2,20 +2,29 @@ img {
   width: 150px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
+  margin-top: 40px;
   display: block;
 }
+
+
 ion-input {
   text-align: center;
 }
+
+.standorttext{
+  margin-bottom: 20px;
+  text-align: start;
+  margin-left: 10px;
+}
+
 .sc-ion-input-md-h {
   --padding-start: 0px;
 }
 ion-datetime {
-  margin-left: auto;
-  margin-right: auto;
+  /*argin-left: auto;
+  margin-right: auto;*/
   font-size: 40px;
-  width: 100px;
+  width: 110px;
   padding: 0%;
   color: rgb(80, 80, 80);
 }
@@ -33,8 +42,8 @@ ion-col {
   font-size: 10px;
 }
 .water {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 .water-alot {
   background-image: url("/assets/images/Tropfen_voll_px.png");
@@ -59,8 +68,8 @@ ion-col {
 }
 
 .temperatur {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 .temperatur-alot {
   background-image: url("/assets/images/Therm_voll.png");
@@ -85,8 +94,8 @@ ion-col {
 }
 
 .licht {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 .licht-alot {
   background-image: url("/assets/images/Licht_sonnig.png");
@@ -111,8 +120,8 @@ ion-col {
 }
 
 .feuchtigkeit {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 .feuchtigkeit-alot {
   background-image: url("/assets/images/Luft_hoch.png");
@@ -141,12 +150,37 @@ ion-col {
 }
 
 .alarm-row {
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
-.alarm-left {
-  margin-left: auto;
+.plant-row{
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
+
+.col_1{
+  flex-shrink: 2;
+}
+.col_2{
+  vertical-align: middle;
+}
+.col_3{
+  flex-shrink: 2;
+}
+
+/*.alarm-left {
+  margin-left: auto;
+}*/
+
+.alarm-time{
+  justify-content: flex-end;
+}
+
+.flex-item{
+  box-sizing: border-box;
+}
+
 
 .center-wrapper {
   display: table;
@@ -157,6 +191,7 @@ ion-col {
   display: table-cell;
   vertical-align: middle;
 }
+
 
 ion-select::part(placeholder) {
   opacity: 0, 9;
@@ -222,9 +257,10 @@ option {
 .notizen {
   margin-left: 17px;
 }
+/*
 .alarm_toggle {
   margin-left: 20px;
-}
+}*/
 .alarm-section {
   margin-bottom: 60px;
 }
@@ -233,7 +269,7 @@ option {
   margin-bottom: 20px;
 }
 .photo_name {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding-left: 0px;
 }
 .water_condition {
@@ -242,4 +278,41 @@ option {
 }
 .condition {
   margin-top: 40px;
+}
+.foto{
+  margin-top: 20px;
+}
+
+
+@media screen and (max-width: 400px){
+  .col_2{
+    flex-basis: 100%;
+    order: 1;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 2;
+  }
+  .col_1 {
+      order: 2;
+      flex-basis: 50%;
+      margin-top: 0px;
+  }
+  .col_3 {
+    order: 3;
+    flex-basis: 50%;
+    margin-top: 0px;
+  }
+  .photo_name{
+    margin-bottom: 0px;
+  }
+  .light_condition{
+    margin-top: 0px;
+  }
+  .water_condition{
+    margin-top: 0px;
+  }
+}
+
+.alert-checkbox-group.sc-ion-alert-md {
+   max-height: 400px;
 }

@@ -32,9 +32,10 @@ export class PhotoService {
       return {
         filepath: savedFile.uri,
         webviewPath: Capacitor.convertFileSrc(savedFile.uri),
-        photoName: "testhybrid",
-        photoDiscription: "Beschreibung hinzufügen"
-      };
+        photoName: "Photoname",
+        photoDiscription: "Beschreibung hinzufügen",
+/*         photoLocation: "Standort"
+ */      };
     }
     else {
       // Use webPath to display the new image instead of base64 since it's
@@ -42,9 +43,10 @@ export class PhotoService {
       return {
         filepath: fileName,
         webviewPath: cameraPhoto.webPath,
-        photoName: "testb",
-        photoDiscription: "Beschreibung"
-      };
+        photoName: "Name",
+        photoDiscription: "Beschreibung",
+/*         photoLocation: "Ort"
+ */      };
     }
   }
 
@@ -163,5 +165,6 @@ export interface Photo {
   webviewPath: string;
   photoName: string;
   photoDiscription: string;
-  [key: string]: string;
+/*   photoLocation: string;
+ */  [key: string]: string;
 }
