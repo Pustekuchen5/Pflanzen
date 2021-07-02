@@ -10,6 +10,13 @@ img {
 ion-input {
   text-align: center;
 }
+
+.standorttext{
+  margin-bottom: 20px;
+  text-align: start;
+  margin-left: 10px;
+}
+
 .sc-ion-input-md-h {
   --padding-start: 0px;
 }
@@ -262,7 +269,7 @@ option {
   margin-bottom: 20px;
 }
 .photo_name {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding-left: 0px;
 }
 .water_condition {
@@ -304,4 +311,8 @@ option {
   .water_condition{
     margin-top: 0px;
   }
+}
+
+.alert-checkbox-group.sc-ion-alert-md {
+   max-height: 400px;
 }
